@@ -15,7 +15,7 @@ namespace ProiectMDS.DTOs
         public int streetNumber { get; set; }
         public string photo { get; set; }
 
-        public int cityId { get; set; }
-        public int ownerId { get; set; }
+        public List<int> cityId { get; set; }
+        public List<int> ownerId { get; set; }
     }
 }

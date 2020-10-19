@@ -8,6 +8,7 @@ using ProiectMDS.DTOs;
 using ProiectMDS.Models;
 using ProiectMDS.Repositories.PropertyRepository;
 using ProiectMDS.Repositories.CityRepository;
+using ProiectMDS.Repositories.OwnerRepository;
 
 
 namespace ProiectMDS.Controllers
@@ -16,12 +17,16 @@ namespace ProiectMDS.Controllers
     [ApiController]
     public class PropertyController : ControllerBase
     {
-        public PropertyController(IPropertyRepository repository)
-        {
-            IPropertyRepository = repository;
-        }
         public IPropertyRepository IPropertyRepository { get; set; }
         public ICityRepository ICityRepository { get; set; }
+        public IOwnerRepository IOwnerRepository { get; set; }
+        public PropertyController(IPropertyRepository propertyrepository, ICityRepository cityrepository, IOwnerRepository ownerrepository)
+        {
+            IPropertyRepository = propertyrepository;
+            ICityRepository = cityrepository;
+            IOwnerRepository = ownerrepository;
+
+        }
         // GET: api/Property
         [HttpGet]
         public ActionResult<IEnumerable<Property>> Get()
@@ -31,9 +36,40 @@ namespace ProiectMDS.Controllers
 
         // GET: api/Property/5
         [HttpGet("{id}")]
-        public ActionResult<Property> Get(int id)
+        public PropertyDetailsDTO Get(int id)
         {
-            return IPropertyRepository.Get(id);
+            Property Property = IPropertyRepository.Get(id);
+            PropertyDetailsDTO MyProperties = new PropertyDetailsDTO()
+            {
+                name=Property.name,
+                type = Property.type,
+                description = Property.description,
+                numberOfStars = Property.numberOfStars,
+                street = Property.street,
+                streetNumber = Property.streetNumber,
+                photo = Property.photo
+            };
+            IEnumerable<City> Cities = ICityRepository.GetAll().Where(x => x.id == Property.cityId);
+            if (Cities != null)
+            {
+                List<string> CityNameList = new List<string>();
+                foreach (City City in Cities)
+                {
+                    CityNameList.Add(City.cityName);
+                }
+                MyProperties.cityName = CityNameList;
+            }
+            IEnumerable<Owner> Owners = IOwnerRepository.GetAll().Where(x => x.id == Property.ownerId);
+            if (Owners != null)
+            {
+                List<string> OwnerNameList = new List<string>();
+                foreach (Owner Owner in Owners)
+                {
+                    OwnerNameList.Add(Owner.lastName);
+                }
+                MyProperties.ownerName = OwnerNameList;
+            }
+            return MyProperties;
         }
 
         // POST: api/Property
@@ -47,9 +83,7 @@ namespace ProiectMDS.Controllers
                 numberOfStars = value.numberOfStars,
                 street = value.street,
                 streetNumber = value.streetNumber,
-                photo = value.photo,
-                cityId = value.cityId,
-                ownerId = value.ownerId
+                photo = value.photo
             };
             return IPropertyRepository.Create(model);
         }
@@ -83,14 +117,7 @@ namespace ProiectMDS.Controllers
             {
                 model.photo = value.photo;
             }
-            if (value.cityId != 0)
-            {
-                model.cityId = value.cityId;
-            }
-            if (value.ownerId != 0)
-            {
-                model.ownerId = value.ownerId;
-            }
+            
             return IPropertyRepository.Update(model);
         }
 
