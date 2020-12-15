@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using ProiectMDS.DTOs;
 using ProiectMDS.Models;
 using ProiectMDS.Repositories.ApartmentRepository;
+using ProiectMDS.Repositories.PhotoRepository;
+
+
 
 
 namespace ProiectMDS.Controllers
@@ -15,11 +18,13 @@ namespace ProiectMDS.Controllers
     [ApiController]
     public class ApartmentController : ControllerBase
     {
-        public ApartmentController(IApartmentRepository repository)
-        {
-            IApartmentRepository = repository;
-        }
         public IApartmentRepository IApartmentRepository { get; set; }
+        public IPhotoRepository IPhotoRepository { get; set; }
+        public ApartmentController(IApartmentRepository apartmentrepository, IPhotoRepository photorepository)
+        {
+            IApartmentRepository = apartmentrepository;
+            IPhotoRepository = photorepository;
+        }
         // GET: api/Apartment
         [HttpGet]
         public ActionResult<IEnumerable<Apartment>> Get()
@@ -29,9 +34,30 @@ namespace ProiectMDS.Controllers
 
         // GET: api/Apartment/5
         [HttpGet("{id}")]
-        public ActionResult<Apartment> Get(int id)
+        public ApartmentDTO Get(int id)
         {
-            return IApartmentRepository.Get(id);
+            Apartment Apartment = IApartmentRepository.Get(id);
+            ApartmentDTO MyApartments = new ApartmentDTO()
+            {
+                id = Apartment.id,
+                apartmentName = Apartment.apartmentName,
+                numberOfRooms = Apartment.numberOfRooms,
+                description = Apartment.description,
+                maxPersons = Apartment.maxPersons,
+                pricePerNight = Apartment.pricePerNight,
+                propertyId = Apartment.propertyId
+            };
+            IEnumerable<Photo> Photos = IPhotoRepository.GetAll().Where(x => x.apartmentId == Apartment.id);
+            if (Photos != null)
+            {
+                List<string> PhotosPathsList = new List<string>();
+                foreach (Photo Photo in Photos)
+                {
+                    PhotosPathsList.Add(Photo.path);
+                }
+                MyApartments.photos = PhotosPathsList;
+            }
+            return MyApartments;
         }
 
         // POST: api/Apartment
@@ -40,6 +66,7 @@ namespace ProiectMDS.Controllers
         {
             Apartment model = new Apartment()
             {
+                apartmentName = value.apartmentName,
                 numberOfRooms = value.numberOfRooms,
                 description = value.description,
                 pricePerNight = value.pricePerNight,

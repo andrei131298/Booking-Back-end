@@ -9,7 +9,7 @@ namespace ProiectMDS.Contexts
 {
     public class Context: DbContext
     {
-        public DbSet<City>Cities { get; set; }
+        public DbSet<City> Cities { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
@@ -17,7 +17,7 @@ namespace ProiectMDS.Contexts
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        
+
         public static bool isMigration = true;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -9,5 +9,6 @@ namespace ProiectMDS.DTOs
     {
         public int propertyId { get; set; }
         public int userId { get; set; }
+        public string propertyName { get; set; }
     }
 }

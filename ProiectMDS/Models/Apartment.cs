@@ -8,6 +8,7 @@ namespace ProiectMDS.Models
     public class Apartment
     {
         public int id { get; set; }
+        public string apartmentName { get; set; }
         public int numberOfRooms { get; set; }
         public int pricePerNight { get; set; }
         public int maxPersons { get; set; }

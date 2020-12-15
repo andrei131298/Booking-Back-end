@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProiectMDS.DTOs;
 using ProiectMDS.Models;
+using ProiectMDS.Repositories.ApartmentRepository;
+using ProiectMDS.Repositories.PropertyRepository;
 using ProiectMDS.Repositories.ReservationRepository;
 using ProiectMDS.Repositories.UserRepository;
 
@@ -16,12 +18,17 @@ namespace ProiectMDS.Controllers
     [ApiController]
     public class ReservationController : ControllerBase
     {
-        public ReservationController(IReservationRepository repository)
+        public ReservationController(IReservationRepository repository,IApartmentRepository apartmentRepo,
+            IPropertyRepository propertyRepo)
         {
             IReservationRepository = repository;
+            IApartmentRepository = apartmentRepo;
+            IPropertyRepository = propertyRepo;
         }
         public IReservationRepository IReservationRepository { get; set; }
         public IUserRepository IUSerRepository { get; set; }
+        public IPropertyRepository IPropertyRepository { get; set; }
+        public IApartmentRepository IApartmentRepository { get; set; }
         // GET: api/Reservation
         [HttpGet]
         public ActionResult<IEnumerable<Reservation>> Get()
@@ -36,6 +43,41 @@ namespace ProiectMDS.Controllers
             return IReservationRepository.Get(id);
         }
 
+        [HttpGet("user/{userId}")]
+        /*
+        public IEnumerable<Reservation> GetReservationsByUser(int userId)
+        {
+            return IReservationRepository.GetReservationsByUser(userId);
+        }
+        */
+        public IEnumerable<ReservationDTO> GetReservationsByUser(int userId)
+        {
+
+            IEnumerable<Reservation> MyReservations = IReservationRepository.GetReservationsByUser(userId);
+            List<ReservationDTO> ReservationsDTO = new List<ReservationDTO>();
+            foreach (Reservation r in MyReservations)
+            {
+                ReservationDTO reservationDTO = new ReservationDTO()
+                {
+                    checkIn = r.checkIn,
+                    checkOut = r.checkOut,
+                    price = r.price,
+                    review = r.review,
+                    userId = r.userId,
+                    apartmentId = r.apartmentId
+
+                };
+                ReservationsDTO.Add(reservationDTO);
+            }
+            foreach (ReservationDTO res in ReservationsDTO)
+            {
+                Apartment Apartment = IApartmentRepository.Get(res.apartmentId);
+                res.apartmentName = Apartment.apartmentName;
+                Property Property = IPropertyRepository.Get(Apartment.propertyId);
+                res.propertyName = Property.name;
+            }
+            return ReservationsDTO;
+        }
         // POST: api/Reservation
         [HttpPost]
         public Reservation Post(ReservationDTO value)
@@ -60,7 +102,7 @@ namespace ProiectMDS.Controllers
             if (value.review != null)
             {
                 model.review = value.review;
-            }         
+            }
             if (value.price != 0)
             {
                 model.price = value.price;

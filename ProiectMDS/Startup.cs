@@ -18,6 +18,7 @@ using ProiectMDS.Repositories.OwnerRepository;
 using ProiectMDS.Repositories.PropertyRepository;
 using ProiectMDS.Repositories.ReservationRepository;
 using ProiectMDS.Repositories.UserRepository;
+using ProiectMDS.Repositories.PhotoRepository;
 
 namespace ProiectMDS
 {
@@ -43,6 +44,7 @@ namespace ProiectMDS
             services.AddTransient<IPropertyRepository, PropertyRepository>();
             services.AddTransient<IReservationRepository, ReservationRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IPhotoRepository, PhotoRepository>();
 
         }
 

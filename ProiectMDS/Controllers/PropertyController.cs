@@ -41,7 +41,7 @@ namespace ProiectMDS.Controllers
             Property Property = IPropertyRepository.Get(id);
             PropertyDetailsDTO MyProperties = new PropertyDetailsDTO()
             {
-                name=Property.name,
+                name = Property.name,
                 type = Property.type,
                 description = Property.description,
                 numberOfStars = Property.numberOfStars,
@@ -117,7 +117,7 @@ namespace ProiectMDS.Controllers
             {
                 model.photo = value.photo;
             }
-            
+
             return IPropertyRepository.Update(model);
         }
 

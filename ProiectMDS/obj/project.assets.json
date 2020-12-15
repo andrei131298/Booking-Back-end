@@ -12546,11 +12546,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andrei\\source\\repos\\ProiectMDS\\ProiectMDS\\ProiectMDS.csproj",
+      "projectUniqueName": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj",
       "projectName": "ProiectMDS",
-      "projectPath": "C:\\Users\\Andrei\\source\\repos\\ProiectMDS\\ProiectMDS\\ProiectMDS.csproj",
+      "projectPath": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj",
       "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andrei\\source\\repos\\ProiectMDS\\ProiectMDS\\obj\\",
+      "outputPath": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12568,6 +12568,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "projectReferences": {}
         }
       },
@@ -12579,6 +12580,7 @@
     },
     "frameworks": {
       "netcoreapp2.1": {
+        "targetAlias": "netcoreapp2.1",
         "dependencies": {
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
@@ -12630,7 +12632,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

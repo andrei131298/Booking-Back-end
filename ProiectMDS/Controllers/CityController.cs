@@ -40,7 +40,7 @@ namespace ProiectMDS.Controllers
         {
             City model = new City()
             {
-                cityName = value.cityName  
+                cityName = value.cityName
             };
             return ICityRepository.Create(model);
         }
@@ -54,7 +54,7 @@ namespace ProiectMDS.Controllers
             {
                 model.cityName = value.cityName;
             }
-            
+
             return ICityRepository.Update(model);
         }
 

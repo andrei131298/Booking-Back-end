@@ -10,6 +10,7 @@ namespace ProiectMDS.Repositories.ReservationRepository
     {
         List<Reservation> GetAll();
         Reservation Get(int id);
+        IEnumerable<Reservation> GetReservationsByUser(int userId);
         Reservation Create(Reservation Reservation);
         Reservation Update(Reservation Reservation);
         Reservation Delete(Reservation Reservation);

@@ -13,6 +13,9 @@ namespace ProiectMDS.DTOs
         public string review { get; set; }
         public int userId { get; set; }
         public int apartmentId { get; set; }
+        public string apartmentName { get; set; }
+        public string propertyName { get; set; }
+
 
     }
 }

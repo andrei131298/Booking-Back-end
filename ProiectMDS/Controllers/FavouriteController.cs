@@ -22,9 +22,10 @@ namespace ProiectMDS.Controllers
         public IPropertyRepository IPropertyRepository { get; set; }
         public IUserRepository IUserRepository { get; set; }
 
-        public FavouriteController(IFavouriteRepository repository)
+        public FavouriteController(IFavouriteRepository repository, IPropertyRepository propertyrepository)
         {
             IFavouriteRepository = repository;
+            IPropertyRepository = propertyrepository;
         }
         // GET: api/Favourite
         [HttpGet]
@@ -38,6 +39,30 @@ namespace ProiectMDS.Controllers
         public ActionResult<Favourite> Get(int id)
         {
             return IFavouriteRepository.Get(id);
+        }
+
+        [HttpGet("user/{userId}")]
+        public IEnumerable<FavouriteDTO> GetByUser(int userId)
+        {
+            
+            IEnumerable<Favourite> MyFavourites = IFavouriteRepository.GetByUser(userId);
+            List<FavouriteDTO> FavouritesDTO = new List<FavouriteDTO>();
+            foreach (Favourite f in MyFavourites)
+            {
+                FavouriteDTO favouriteDTO = new FavouriteDTO()
+                {
+                    userId = f.userId,
+                    propertyId = f.propertyId,
+
+                };
+                FavouritesDTO.Add(favouriteDTO);
+            }
+            foreach (FavouriteDTO fav in FavouritesDTO)
+            {
+                Property Property = IPropertyRepository.Get(fav.propertyId);
+                fav.propertyName = Property.name;
+            }
+            return FavouritesDTO;
         }
 
         // POST: api/Favourite

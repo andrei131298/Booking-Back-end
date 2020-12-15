@@ -10,6 +10,7 @@ namespace ProiectMDS.Repositories.FavouriteRepository
     {
         List<Favourite> GetAll();
         Favourite Get(int id);
+        IEnumerable<Favourite> GetByUser(int userId);
         Favourite Create(Favourite Favourite);
         Favourite Update(Favourite Favourite);
         Favourite Delete(Favourite Favourite);

@@ -25,6 +25,11 @@ namespace ProiectMDS.Repositories.ReservationRepository
             return _context.Reservations.SingleOrDefault(x => x.id == Id);
         }
 
+        public IEnumerable<Reservation> GetReservationsByUser(int userId)
+        {
+            return _context.Reservations.ToList().Where(res => res.userId == userId);
+        }
+
         public List<Reservation> GetAll()
         {
             return _context.Reservations.ToList();

@@ -16,15 +16,26 @@ namespace ProiectMDS.Repositories.FavouriteRepository
         }
         public Favourite Create(Favourite favourite)
         {
-            var result = _context.Add<Favourite>(favourite);
-            _context.SaveChanges();
-            return result.Entity;
+            if (_context.Favourites.Any(fav => fav.propertyId == favourite.propertyId && fav.userId == favourite.userId))
+            {
+                return null;
+            }
+            else
+            {
+                var result = _context.Add<Favourite>(favourite);
+                _context.SaveChanges();
+                return result.Entity;
+            }
         }
         public Favourite Get(int Id)
         {
             return _context.Favourites.SingleOrDefault(x => x.id == Id);
         }
 
+        public IEnumerable<Favourite> GetByUser(int userId)
+        {
+            return _context.Favourites.ToList().Where(fav => fav.userId == userId);
+        }
         public List<Favourite> GetAll()
         {
             return _context.Favourites.ToList();
