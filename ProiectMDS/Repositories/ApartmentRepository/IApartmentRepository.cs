@@ -10,6 +10,7 @@ namespace ProiectMDS.Repositories.ApartmentRepository
     {
         List<Apartment> GetAll();
         Apartment Get(int id);
+        IEnumerable<Apartment> GetApartmentsByPropertyId(int propertyId);
         Apartment Create(Apartment Apartment);
         Apartment Update(Apartment Apartment);
         Apartment Delete(Apartment Apartment);

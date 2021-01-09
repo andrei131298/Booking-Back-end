@@ -48,6 +48,7 @@ namespace ProiectMDS.Controllers
                 propertyId = Apartment.propertyId
             };
             IEnumerable<Photo> Photos = IPhotoRepository.GetAll().Where(x => x.apartmentId == Apartment.id);
+            
             if (Photos != null)
             {
                 List<string> PhotosPathsList = new List<string>();
@@ -57,7 +58,42 @@ namespace ProiectMDS.Controllers
                 }
                 MyApartments.photos = PhotosPathsList;
             }
+            
             return MyApartments;
+        }
+
+        [HttpGet("propertyId/{propertyId}")]
+        public List<ApartmentDTO> GetApartmentsByPropertyId(int propertyId)
+        {
+            
+                IEnumerable<Apartment> MyApartments = IApartmentRepository.GetApartmentsByPropertyId(propertyId);
+                List<ApartmentDTO> ApartmentsDTO = new List<ApartmentDTO>();
+                foreach (Apartment ap in MyApartments)
+                {
+                    IEnumerable<Photo> Photos = IPhotoRepository.GetAll().Where(x => x.apartmentId == ap.id);
+                    if (Photos != null)
+                    {
+                        List<string> PhotosPathsList = new List<string>();
+                        foreach (Photo Photo in Photos)
+                        {
+                            PhotosPathsList.Add(Photo.path);
+                        }
+                        ApartmentDTO apartmentDTO = new ApartmentDTO()
+                        {
+                            id = ap.id,
+                            apartmentName = ap.apartmentName,
+                            numberOfRooms = ap.numberOfRooms,
+                            description = ap.description,
+                            pricePerNight = ap.pricePerNight,
+                            maxPersons = ap.maxPersons,
+                            propertyId = ap.propertyId,
+                            photos = PhotosPathsList
+                        };
+                        ApartmentsDTO.Add(apartmentDTO);
+                }
+                    
+                }
+                return ApartmentsDTO;
         }
 
         // POST: api/Apartment

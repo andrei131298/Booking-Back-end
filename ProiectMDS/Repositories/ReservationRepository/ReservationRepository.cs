@@ -29,7 +29,12 @@ namespace ProiectMDS.Repositories.ReservationRepository
         {
             return _context.Reservations.ToList().Where(res => res.userId == userId);
         }
-
+        public IEnumerable<Reservation> GetAlreadyReservedByDates(DateTime checkIn, DateTime checkOut)
+        {
+            return _context.Reservations.ToList().Where(res => checkIn >= res.checkIn && checkIn < res.checkOut ||
+                                                                checkOut > res.checkIn && checkOut <= res.checkOut ||
+                                                                checkIn <= res.checkIn && checkOut >= res.checkOut);
+        }
         public List<Reservation> GetAll()
         {
             return _context.Reservations.ToList();

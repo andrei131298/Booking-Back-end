@@ -9,6 +9,7 @@ namespace ProiectMDS.Repositories.FavouriteRepository
     public interface IFavouriteRepository
     {
         List<Favourite> GetAll();
+        Favourite GetByPropertyAndUser(int propertyId, int userId);
         Favourite Get(int id);
         IEnumerable<Favourite> GetByUser(int userId);
         Favourite Create(Favourite Favourite);

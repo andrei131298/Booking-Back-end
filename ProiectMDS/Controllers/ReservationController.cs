@@ -59,12 +59,14 @@ namespace ProiectMDS.Controllers
             {
                 ReservationDTO reservationDTO = new ReservationDTO()
                 {
+                    id = r.id,
                     checkIn = r.checkIn,
                     checkOut = r.checkOut,
                     price = r.price,
                     review = r.review,
                     userId = r.userId,
-                    apartmentId = r.apartmentId
+                    apartmentId = r.apartmentId,
+                    numberOfPersons = r.numberOfPersons
 
                 };
                 ReservationsDTO.Add(reservationDTO);
@@ -75,21 +77,29 @@ namespace ProiectMDS.Controllers
                 res.apartmentName = Apartment.apartmentName;
                 Property Property = IPropertyRepository.Get(Apartment.propertyId);
                 res.propertyName = Property.name;
+                res.propertyId = Property.id;
             }
             return ReservationsDTO;
         }
+        [HttpGet, Route("dates")]
+        public IEnumerable<Reservation> GetAlreadyReservedByDates(DateTime checkIn, DateTime checkOut)
+        {
+            return IReservationRepository.GetAlreadyReservedByDates(checkIn,checkOut);
+        }
+
         // POST: api/Reservation
         [HttpPost]
         public Reservation Post(ReservationDTO value)
         {
             Reservation model = new Reservation()
             {
-                checkIn = value.checkIn,
-                checkOut = value.checkOut,
+                checkIn = value.checkIn.ToLocalTime(),
+                checkOut = value.checkOut.ToLocalTime(),
                 price = value.price,
                 review = value.review,
                 userId = value.userId,
-                apartmentId = value.apartmentId
+                apartmentId = value.apartmentId,
+                numberOfPersons = value.numberOfPersons
             };
             return IReservationRepository.Create(model);
         }
@@ -120,6 +130,10 @@ namespace ProiectMDS.Controllers
                 model.userId = value.userId;
             }
             if (value.apartmentId != 0)
+            {
+                model.apartmentId = value.apartmentId;
+            }
+            if (value.numberOfPersons != 0)
             {
                 model.apartmentId = value.apartmentId;
             }

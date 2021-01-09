@@ -31,7 +31,10 @@ namespace ProiectMDS.Repositories.FavouriteRepository
         {
             return _context.Favourites.SingleOrDefault(x => x.id == Id);
         }
-
+        public Favourite GetByPropertyAndUser(int propertyId, int userId)
+        {
+            return _context.Favourites.SingleOrDefault(x => x.propertyId == propertyId && x.userId == userId);
+        }
         public IEnumerable<Favourite> GetByUser(int userId)
         {
             return _context.Favourites.ToList().Where(fav => fav.userId == userId);

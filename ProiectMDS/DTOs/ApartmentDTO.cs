@@ -8,7 +8,6 @@ namespace ProiectMDS.DTOs
     public class ApartmentDTO
     {
         public int id { get; set; }
-
         public string apartmentName { get; set; }
         public int numberOfRooms { get; set; }
         public string description { get; set; }

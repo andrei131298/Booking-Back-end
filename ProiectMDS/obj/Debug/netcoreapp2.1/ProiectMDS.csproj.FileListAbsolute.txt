@@ -74,3 +74,20 @@ C:\Users\Andrei\Downloads\Booking-Back-end-master\ProiectMDS\obj\Debug\netcoreap
 C:\Users\Andrei\Downloads\Booking-Back-end-master\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.dll
 C:\Users\Andrei\Downloads\Booking-Back-end-master\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.pdb
 C:\Users\Andrei\Downloads\Booking-Back-end-master\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.genruntimeconfig.cache
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\appsettings.Development.json
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\appsettings.json
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\ProiectMDS.deps.json
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\ProiectMDS.runtimeconfig.json
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\ProiectMDS.runtimeconfig.dev.json
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\ProiectMDS.dll
+A:\Booking Backend\ProiectMDS\bin\Debug\netcoreapp2.1\ProiectMDS.pdb
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.csprojAssemblyReference.cache
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.AssemblyInfoInputs.cache
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.AssemblyInfo.cs
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.csproj.CoreCompileInputs.cache
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.RazorAssemblyInfo.cache
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.RazorAssemblyInfo.cs
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.RazorTargetAssemblyInfo.cache
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.dll
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.pdb
+A:\Booking Backend\ProiectMDS\obj\Debug\netcoreapp2.1\ProiectMDS.genruntimeconfig.cache

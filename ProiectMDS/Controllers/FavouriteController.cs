@@ -40,7 +40,11 @@ namespace ProiectMDS.Controllers
         {
             return IFavouriteRepository.Get(id);
         }
-
+        [HttpGet("user={userId}/property={propertyId}")]
+        public Favourite GetByPropertyAndUser(int propertyId, int userId)
+        {
+            return IFavouriteRepository.GetByPropertyAndUser(propertyId,userId);
+        }
         [HttpGet("user/{userId}")]
         public IEnumerable<FavouriteDTO> GetByUser(int userId)
         {
@@ -94,11 +98,11 @@ namespace ProiectMDS.Controllers
             return IFavouriteRepository.Update(model);
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public Favourite Delete(int id)
+        // DELETE: api/Favourite/user={id}/property={id}
+        [HttpDelete("user={userId}/property={propertyId}")]
+        public Favourite Delete(int propertyId,int userId)
         {
-            Favourite model = IFavouriteRepository.Get(id);
+            Favourite model = IFavouriteRepository.GetByPropertyAndUser(propertyId,userId);
             return IFavouriteRepository.Delete(model);
         }
     }

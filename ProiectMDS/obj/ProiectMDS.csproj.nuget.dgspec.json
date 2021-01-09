@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj": {}
+    "A:\\Booking Backend\\ProiectMDS\\ProiectMDS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj": {
+    "A:\\Booking Backend\\ProiectMDS\\ProiectMDS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj",
+        "projectUniqueName": "A:\\Booking Backend\\ProiectMDS\\ProiectMDS.csproj",
         "projectName": "ProiectMDS",
-        "projectPath": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj",
+        "projectPath": "A:\\Booking Backend\\ProiectMDS\\ProiectMDS.csproj",
         "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\obj\\",
+        "outputPath": "A:\\Booking Backend\\ProiectMDS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

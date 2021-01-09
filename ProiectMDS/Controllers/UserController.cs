@@ -34,23 +34,6 @@ namespace ProiectMDS.Controllers
             return IUserRepository.Get(id);
         }
 
-        // POST: api/User
-        [HttpPost]
-        public User Post(UserDTO value)
-        {
-            User model = new User()
-            {
-                firstName = value.firstName,
-                lastName = value.lastName,
-                sex = value.sex,
-                birthDate = value.birthDate,
-                bankAccount = value.bankAccount,
-                email = value.email,
-                password = value.password
-            };
-            return IUserRepository.Create(model);
-        }
-
         // PUT: api/User/5
         [HttpPut("{id}")]
         public User Put(int id, UserDTO value)
@@ -86,8 +69,18 @@ namespace ProiectMDS.Controllers
             }
             return IUserRepository.Update(model);
         }
+        [HttpPost("register")]
+        public IActionResult Register(RegisterRequest regRequest)
+        {
+            return Ok(IUserRepository.Register(regRequest));
+        }
 
-        // DELETE: api/ApiWithActions/5
+        [HttpPost("login")]
+        public IActionResult Login(AuthenticationRequest request)
+        {
+            return Ok(IUserRepository.Login(request));
+        }
+      
         [HttpDelete("{id}")]
         public User Delete(int id)
         {

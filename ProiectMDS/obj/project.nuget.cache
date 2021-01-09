@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2ysHvlGFNDg2+zUGoym+2p1qvm9YF82ehoeMEaiN8Hw7cpt7627/fGZvnWM2bw3b127E1rt7b5uWRagcQs5q/A==",
+  "dgSpecHash": "W16BU3V1xBQgHNfT7hxUj5M6PuOPuLcGmPRyFtaI6hriq7OZwhWddD/z0xbTlC0WmqZ8NBKt3in53oSMn4Dufw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andrei\\Downloads\\Booking-Back-end-master\\ProiectMDS\\ProiectMDS.csproj",
+  "projectFilePath": "A:\\Booking Backend\\ProiectMDS\\ProiectMDS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",

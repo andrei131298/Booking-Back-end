@@ -19,6 +19,7 @@ using ProiectMDS.Repositories.PropertyRepository;
 using ProiectMDS.Repositories.ReservationRepository;
 using ProiectMDS.Repositories.UserRepository;
 using ProiectMDS.Repositories.PhotoRepository;
+using ProiectMDS.Models;
 
 namespace ProiectMDS
 {
@@ -45,6 +46,7 @@ namespace ProiectMDS
             services.AddTransient<IReservationRepository, ReservationRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IPhotoRepository, PhotoRepository>();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
         }
 

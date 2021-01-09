@@ -10,8 +10,10 @@ namespace ProiectMDS.Repositories.UserRepository
     {
         List<User> GetAll();
         User Get(int id);
-        User Create(User User);
         User Update(User User);
         User Delete(User User);
+
+        User Register(RegisterRequest request);
+        AuthenticationResponse Login(AuthenticationRequest request);
     }
 }
